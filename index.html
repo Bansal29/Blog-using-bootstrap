@@ -1,0 +1,597 @@
+<!-- this is home page -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/1a2a12610c.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .first:hover {
+        transform: scale(0.9);
+      }
+      .selected-blog {
+  transform: scale(0.9);
+  box-shadow: 10px 5px 5px rgb(6, 0, 8);
+  /* opacity: 0.8; */
+  transition: transform 0.3s ease;
+  /* opacity 0.3s ease */
+  background-color: black;
+  -webkit-text-fill-color: aqua;
+}
+#social a i:hover {
+        transform: scale(1.8);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">CodeGeek</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Topics
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Artificial Intelligence</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Machine Learning</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">BlockChain Technologies</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Web Technologies</a></li>
+              </ul>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li> -->
+          </ul>
+          <!-- <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              id="search-item"
+              type="search"
+              placeholder="Search Blog here..."
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit" onclick="search()">
+              Search
+            </button>
+          </form> -->
+          <form class="d-flex" onsubmit="searchAndRedirect(event)">
+            <input
+              class="form-control me-2"
+              id="search-item"
+              type="search"
+              placeholder="Search Blog here..."
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+          
+        </div>
+        <div class="mx-2">
+          <button
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+          >
+            Log In
+          </button>
+          <button
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#signupModal"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- login Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="loginModalLabel">
+              Log In to CodeGeek
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                />
+              </div>
+              <br />
+              <div class="form-group form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label class="form-check-label" for="exampleCheck1"
+                  >Remember Me</label
+                >
+              </div>
+              <br />
+              <button
+                type="submit"
+                class="btn btn-primary d-flex justify-content-center align-items-center"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- signup Modal -->
+    <div
+      class="modal fade"
+      id="signupModal"
+      tabindex="-1"
+      aria-labelledby="signupModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="signupModalLabel">
+              Sign Up to CodeGeek
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                />
+              </div>
+              <div class="form-group">
+                <label for="cexampleInputPassword1">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="cexampleInputPassword1"
+                />
+              </div>
+              <br />
+              <button
+                type="submit"
+                class="btn btn-primary d-flex justify-content-center align-items-center"
+              >
+                Create Account
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide carousel-fade"
+      data-ride="carousel"
+      data-interval="2000"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="codeimg.jpgxampleCaptions"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="img-2.jpg"
+            class="d-block w-100"
+            alt="..."
+            style="max-height: 70vh"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h2>CodeGeek Welcomes you!</h2>
+            <p>Developments, Innovations,Blogs and More!</p>
+            <button class="btn btn-danger">Artificial Intelligence</button>
+            <button class="btn btn-warning">Web Development</button>
+            <button class="btn btn-success">BlockChain</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="img-1.jpg"
+            class="d-block w-100"
+            alt="..."
+            style="max-height: 70vh"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h2>CodeGeek Welcomes you!</h2>
+            <p>Developments, Innovations,Blogs and More!</p>
+            <button class="btn btn-danger">Artificial Intelligence</button>
+            <button class="btn btn-warning">Web Development</button>
+            <button class="btn btn-success">BlockChain</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="img-3.jpg"
+            class="d-block w-100"
+            alt="..."
+            style="max-height: 70vh"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h2>CodeGeek Welcomes you!</h2>
+            <p>Developments, Innovations,Blogs and More!</p>
+            <button class="btn btn-danger">Artificial Intelligence</button>
+            <button class="btn btn-warning">Web Development</button>
+            <button class="btn btn-success">BlockChain</button>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- <div class="product-list"> -->
+    <div class="container my-4">
+      <div class="row mb-2">
+        <!-- <div class="product"> -->
+        <div id="blog1"  class="first col-md-6">
+          <div
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          >
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success-emphasis"
+                >World</strong
+              >
+              <h3 class="blog mb-0">Is Artificial Intelligence really a boon?</h3>
+              <div class="mb-1 text-body-secondary">Nov 12</div>
+              <p class="card-text mb-auto">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content.
+              </p>
+              <a
+                href="blog.html"
+                class="icon-link gap-1 icon-link-hover stretched-link"
+              >
+                Continue reading
+              </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <img
+                class="bd-placeholder-img"
+                width="200"
+                height="250"
+                src="img-1.jpg"
+              />
+            </div>
+          </div>
+        </div>
+        <div id="blog1" class="first col-md-6">
+          <div
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          >
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-danger-emphasis"
+                >Design</strong
+              >
+              <h3 class="blog mb-0">Web Designing</h3>
+              <div class="mb-1 text-body-secondary">Nov 11</div>
+              <p class="mb-auto">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content.
+              </p>
+              <a
+                href="blog.html"
+                class="icon-link gap-1 icon-link-hover stretched-link"
+              >
+                Continue reading
+                <svg class="bi">
+                  <use xlink:href="#chevron-right"></use>
+                </svg>
+              </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <img
+                class="bd-placeholder-img"
+                width="200"
+                height="250"
+                src="img-2.jpg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container my-4">
+      <div class="row mb-2">
+        <div id="blog1" class="first col-md-6">
+          <div
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          >
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary-emphasis"
+                >World</strong
+              >
+              <h3 class="blog mb-0">Future of BlockChain Technology</h3>
+              <div class="mb-1 text-body-secondary">Nov 12</div>
+              <p class="card-text mb-auto">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content.
+              </p>
+              <a
+                href="blog.html"
+                class="icon-link gap-1 icon-link-hover stretched-link"
+              >
+                Continue reading
+              </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <img
+                class="bd-placeholder-img"
+                width="200"
+                height="250"
+                src="img-3.jpg"
+              />
+            </div>
+          </div>
+        </div>
+      <div id="blog1" class="first col-md-6">
+        <div
+          class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+        >
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success-emphasis"
+              >Design</strong
+            >
+            <h3 class="blog mb-0">Machine Learning</h3>
+            <div class="mb-1 text-body-secondary">Nov 11</div>
+            <p class="mb-auto">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content.
+            </p>
+            <a href="blog.html" class="icon-link gap-1 icon-link-hover stretched-link">
+              Continue reading
+              <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+            </a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <img
+              class="bd-placeholder-img"
+              width="200"
+              height="250"
+              src="img-4.jpg"
+            />
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+    <!-- </div> -->
+    <footer
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+    >
+      <div class="col-md-4 d-flex align-items-center">
+        <a
+          href="/"
+          class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+        >
+        </a>
+        <span class="mb-3 mb-md-0 text-body-secondary"
+          >© 2023 Company, Inc</span
+        >
+      </div>
+
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li id="social" class="ms-3">
+          <a class="text-body-secondary" href="#">
+            <i class="fa fa-google"></i
+          ></a>
+        </li>
+        <li id="social" class="ms-3">
+          <a class="text-body-secondary" href="#"
+            ><i class="fa fa-twitter"></i
+          ></a>
+        </li>
+        <li id="social" class="ms-3">
+          <a class="text-body-secondary" href="#"
+            ><i class="fa fa-instagram"></i
+          ></a>
+        </li>
+      </ul>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script>
+      const search =()=>{
+        const searchbox=document.getElementById("search-item").value.toUppercase();
+        const storeitems=document.getElementsByClassName("product-list");
+        const product=document.querySelectorAll(".product");
+        const pname=storeitems.getElementsByTagName("h3");
+
+        for(var i=0;i<pname.length;i++){
+          let match=product[i].getElementsByTagName('h3')[0];
+          
+          if(match){
+              let textvalue=match.textContent || match.innerHTML
+
+              if(textvalue.toUpperCase().indexOf(searchbox)>-1){
+                product[i].style.display="";
+              }
+              else{
+                product[i].style.display="No Results found!";
+              }
+          }
+        }
+      }
+    </script> -->
+    <!-- <script>
+      function search(){
+        let input=document.getElementById('search-item').value
+        input=input.toLowercase();
+        let x=document.getElementsByClassName('blog');
+        for(i=0;i<x.length;i++)
+        {
+          if(!x[i].innerHTML.toLocaleLowerCase().includes(input)){
+            x[i].style.display="none";
+          }
+          else{
+            x[i].style.display="blogs!";
+          }
+        }
+      }
+      </script> -->
+      <script>
+      function searchAndRedirect(event) {
+        event.preventDefault(); // Prevent form submission
+      
+        const searchQuery = document.getElementById('search-item').value.toLowerCase();
+        const blogSections = document.getElementsByClassName('first');
+      
+        for (let i = 0; i < blogSections.length; i++) {
+          const blogTitle = blogSections[i].querySelector('.blog').innerText.toLowerCase();
+      
+          if (blogTitle.includes(searchQuery)) {
+            // Remove the selected-blog class from any previously selected blog section
+            const previouslySelected = document.querySelector('.selected-blog');
+            if (previouslySelected) {
+              previouslySelected.classList.remove('selected-blog');
+            }
+      
+            // Apply the selected-blog class to the matching blog section
+            blogSections[i].classList.add('selected-blog');
+      
+            // Scroll to the matching blog section
+            window.location.href = `#${blogSections[i].id}`;
+            return; // Exit the function after redirecting
+          }
+        }
+      
+        // If no matching blog section found, display an alert or perform some other action
+        alert('No matching blog found.');
+      }
+      </script>
+  </body>
+</html>
